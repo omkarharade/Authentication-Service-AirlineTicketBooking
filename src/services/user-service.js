@@ -1,8 +1,10 @@
 const UserRepository = require("../repository/user-repository");
+const { User, Role } = require("../models/index");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { JWT_KEY } = require("../config/serverConfig");
 const { use } = require("../routes");
+
 class UserService {
 	constructor() {
 		this.userRepository = new UserRepository();
@@ -90,6 +92,15 @@ class UserService {
 			return user.id;
 		} catch (error) {
 			console.log("Something went wrong in the auth process");
+			throw error;
+		}
+	}
+
+	isAdmin(userId) {
+		try {
+			return this.userRepository.isAdmin(userId);
+		} catch (error) {
+			console.log("Something went wrong in the password comparison");
 			throw error;
 		}
 	}
