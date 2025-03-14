@@ -33,7 +33,7 @@ Basic RESTful api for SIGNUP and SIGNIN of Users.
     App should now be running on **localhost:[PORT]**
          
 ### Dependencies 
- - For dependencies refer ackage.json
+ - For dependencies refer package.json
 
 
 ## Available API Routes
